@@ -4,6 +4,7 @@
 
 <style>
 body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   max-width: 1000px;
   margin: 0 auto;
 }

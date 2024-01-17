@@ -15,7 +15,7 @@
   display: inline-flex;
   flex-direction: column;
   background: linear-gradient(to right bottom, rgb(92, 128, 221), rgb(44, 12, 186));
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
