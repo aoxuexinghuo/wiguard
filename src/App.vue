@@ -9,27 +9,34 @@
 </template>
 
 <style>
+*:not(input, textarea, select) {
+  user-select: none;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background: #f3f3f3;
-
 }
 
 .wrapper {
   position: relative;
   margin: auto;
-  max-width: 1000px;
+  max-width: 800px;
   height: 100vh;
   background: white;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
+header {
+  padding: 20px;
+}
+
 .sider {
   position: fixed;
   top: 200px;
-  right: calc(50% - 610px);
+  right: calc(50% - 510px);
   width: 100px;
   display: inline-flex;
   flex-direction: column;
