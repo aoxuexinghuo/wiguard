@@ -1,3 +1,15 @@
+<script lang="ts" setup>
+import { watch } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+watch(() => route.meta, (meta) => {
+  document.title = meta.title as string
+})
+
+</script>
+
 <template>
   <div class="wrapper">
     <RouterView />
@@ -29,11 +41,8 @@ body {
   overflow-x: hidden;
 }
 
-header {
-  padding: 20px;
-}
-
 .sider {
+  font-size: 0.9rem;
   position: fixed;
   top: 200px;
   right: calc(50% - 510px);
@@ -41,5 +50,6 @@ header {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
+  gap: 4px;
 }
 </style>

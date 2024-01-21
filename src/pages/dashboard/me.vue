@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ElAvatar } from 'element-plus'
+import { ElAvatar, ElButton } from 'element-plus'
 import { UserFilled } from '@element-plus/icons-vue'
 </script>
 
@@ -8,6 +8,7 @@ import { UserFilled } from '@element-plus/icons-vue'
     <ElAvatar size="large" :icon="UserFilled" />
     <span>用户</span>
   </div>
+  <ElButton type="primary">退出登录</ElButton>
 </template>
 
 <style scoped>
@@ -15,6 +16,6 @@ import { UserFilled } from '@element-plus/icons-vue'
   display: flex;
   padding: 20px;
   gap: 12px;
-  background: linear-gradient(to bottom, transparent, #09569122);
+  background: linear-gradient(to bottom, transparent, #157fcf22);
 }
 </style>

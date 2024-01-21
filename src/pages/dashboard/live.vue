@@ -1,3 +1,3 @@
 <template>
-  index
+  live
 </template>
