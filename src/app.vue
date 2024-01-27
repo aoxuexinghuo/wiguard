@@ -1,55 +1,21 @@
-<script lang="ts" setup>
-import { watch } from 'vue'
-import { useRoute } from 'vue-router'
+<script setup lang="ts">
+import { ref, watch } from 'vue'
+import { Tabbar, TabbarItem } from 'vant'
+import { useRouter } from 'vue-router'
 
-const route = useRoute()
-
-watch(() => route.meta, (meta) => {
-  document.title = meta.title as string
-})
+const router = useRouter()
+const active = ref('home')
+watch(router.currentRoute, route => active.value = route.name as string)
+watch(active, name => router.push({ name }))
 
 </script>
 
 <template>
-  <div class="wrapper">
-    <RouterView />
-  </div>
-  <div class="sider">
-    <img src="/qrcode.svg" alt="qrcode" width="100%" />
-    <span>扫码手机浏览</span>
-  </div>
+  <RouterView />
+  <Tabbar v-model="active">
+    <TabbarItem name="index" icon="wap-home-o">首页</TabbarItem>
+    <TabbarItem name="live" icon="eye-o">实况</TabbarItem>
+    <TabbarItem name="stats" icon="bar-chart-o">统计</TabbarItem>
+    <TabbarItem name="profile" icon="user-circle-o">我的</TabbarItem>
+  </Tabbar>
 </template>
-
-<style>
-*:not(input, textarea, select) {
-  user-select: none;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background: #f3f3f3;
-}
-
-.wrapper {
-  position: relative;
-  margin: auto;
-  max-width: 800px;
-  height: 100vh;
-  background: white;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.sider {
-  font-size: 0.9rem;
-  position: fixed;
-  top: 200px;
-  right: calc(50% - 510px);
-  width: 100px;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-</style>

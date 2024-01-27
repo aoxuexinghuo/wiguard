@@ -1,3 +1,3 @@
 <template>
-  live
+  实况
 </template>

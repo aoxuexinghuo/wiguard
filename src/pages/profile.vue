@@ -1,3 +1,3 @@
 <template>
-  device
+  我的
 </template>

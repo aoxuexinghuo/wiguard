@@ -1,3 +1,3 @@
 <template>
-  <h1>微智护</h1>
+  统计
 </template>
