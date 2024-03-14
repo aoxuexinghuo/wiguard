@@ -1,3 +1,3 @@
 <template>
-  实况
+  <van-skeleton row="5" />
 </template>

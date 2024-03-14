@@ -1,3 +1,3 @@
 <template>
-  统计
+  <van-skeleton row="5" />
 </template>

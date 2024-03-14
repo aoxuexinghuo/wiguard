@@ -10,6 +10,7 @@ watch(active, name => router.push({ name }))
 </script>
 
 <template>
+  <van-nav-bar title="微智护" />
   <router-view />
   <van-tabbar v-model="active">
     <van-tabbar-item name="index" icon="wap-home-o">首页</van-tabbar-item>
