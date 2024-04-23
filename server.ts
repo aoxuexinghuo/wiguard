@@ -1,15 +1,20 @@
 import express, { Router } from 'express'
+import { createServer as createHttpServer } from 'http'
 import asyncErrors from 'express-async-errors'
-import { createServer } from 'vite'
+import { createServer as createViteServer } from 'vite'
+import { Server } from 'socket.io'
 import dotenv from 'dotenv'
 import chalk from 'chalk'
 import fs from 'fs'
 import path from 'path'
 
+let port: number
 void asyncErrors
 dotenv.config()
+
 const app = express()
-let port: number
+const server = createHttpServer(app)
+const io = new Server(server)
 
 const apis = Router()
 app.use('/api', apis)
@@ -23,7 +28,7 @@ app.use('/api', (req, res) => {
 })
 
 if (process.env.NODE_ENV === 'development') {
-  const vite = await createServer({
+  const vite = await createViteServer({
     server: { middlewareMode: true }
   })
   app.use(vite.middlewares)
@@ -37,6 +42,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 console.log(chalk.cyan(`server started at http://localhost:${port}/`))
-app.listen(port)
+server.listen(port)
 
-export { apis }
+export { apis, io }
