@@ -27,7 +27,5 @@ dist-ssr
 package-lock.json
 yarn.lock
 
-# Server build files
-/*.js
-/api/*.js
+/server/**/*.js
 .env

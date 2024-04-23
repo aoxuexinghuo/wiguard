@@ -18,7 +18,7 @@ const io = new Server(server)
 
 const apis = Router()
 app.use('/api', apis)
-fs.readdirSync('api').forEach(file => {
+fs.readdirSync('server/api').forEach(file => {
   if (path.extname(file) === '.js') {
     import(`./api/${file}`)
   }
