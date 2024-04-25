@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onUnmounted, reactive, ref } from 'vue'
+import { onUnmounted, reactive } from 'vue'
 import { io } from 'socket.io-client'
 
 import VCharts from 'vue-echarts'
