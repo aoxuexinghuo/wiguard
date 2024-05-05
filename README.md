@@ -6,7 +6,7 @@
 ![](https://img.shields.io/badge/Express-grey)
 ![](https://img.shields.io/badge/PostgreSQL-blue)
 
-Wireless Sensing based Health Monitoring System
+Wireless sensing based health monitoring system, collector project: [WiFall](https://github.com/saurlax/wifall).
 
 ## How to run
 
