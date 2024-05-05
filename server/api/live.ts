@@ -8,4 +8,10 @@ io.on('connection', socket => {
     // socket.broadcast.emit('csi', data)
     io.emit('csi', data)
   })
+  socket.on('collect', (data) => {
+    io.emit('collect', data)
+  })
+  socket.on('status', (data) => {
+    io.emit('status', data)
+  })
 })

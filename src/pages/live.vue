@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onUnmounted, reactive } from 'vue'
+import { onUnmounted, reactive, ref } from 'vue'
 import { io } from 'socket.io-client'
 
 import VCharts from 'vue-echarts'
@@ -94,6 +94,16 @@ socket.on('csi', (newdata) => {
 
 });
 
+socket.on('status', (msg) => {
+  status.value = msg
+})
+
+const collect = () => {
+  socket.emit('collect')
+}
+
+const status = ref('')
+
 onUnmounted(() => {
   socket.disconnect()
 })
@@ -102,6 +112,8 @@ onUnmounted(() => {
 <template>
   <VCharts class="chart" :option="option" autoresize />
   <button @click="random">random csi</button>
+  <button @click="collect">collect</button>
+  <div>status: {{ status }}</div>
 </template>
 
 <style scoped>
