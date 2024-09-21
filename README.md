@@ -1,22 +1,30 @@
-# 微智护WiGuard
+# WiGuard
 
-![](https://img.shields.io/badge/Vue-green)
-![](https://img.shields.io/badge/Vant-4c1)
-![](https://img.shields.io/badge/ECharts-darkred)
-![](https://img.shields.io/badge/Express-grey)
-![](https://img.shields.io/badge/PostgreSQL-blue)
+Wireless sensing based health monitoring system.
 
-Wireless sensing based health monitoring system, collector project: [WiFall](https://github.com/saurlax/wifall).
+## Workflow
+
+```mermaid
+graph LR
+
+Collector-->Broker
+Model<-->Broker
+Broker-->Nuxt.js
+```
 
 ## How to run
 
-First, you need to configure your environment variables. You can modify it in `example.env` and rename it to `.env` to take effect.
+First, create a `.env` file in the root directory with the following content:
 
-Then, build and run it.
+```properties
+DATABASE_RUL=
+```
+
+Then, build and run the project:
 
 ```bash
-$ npm run build
-$ npm start
+npm run build
+npm start
 ```
 
 ## API
