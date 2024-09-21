@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onUnmounted, reactive, ref } from 'vue'
-import { io } from 'socket.io-client'
 
 import VCharts from 'vue-echarts'
 import { use } from 'echarts/core'
@@ -69,51 +68,13 @@ const random = () => {
       })
     }
   }
-  socket.emit('csi', newdata)
 }
-
-
-const socket = io()
-
-socket.on('csi', (newdata) => {
-  console.log(newdata);
-
-  const now = Date.now()
-  data.push(...newdata)
-  for (const item of data) {
-    if (item.timestamp < now - 30000) {
-      data.shift()
-    } else {
-      break
-    }
-  }
-  option.series.data = data.map((item: any) => {
-    return [(item.timestamp - now + 30000) / 100, item.subcarrier, item.csi]
-  })
-  console.log(option.series.data);
-
-});
-
-socket.on('status', (msg) => {
-  status.value = msg
-})
-
-const collect = () => {
-  socket.emit('collect')
-}
-
-const status = ref('')
-
-onUnmounted(() => {
-  socket.disconnect()
-})
 </script>
 
 <template>
   <VCharts class="chart" :option="option" autoresize />
   <button @click="random">random csi</button>
-  <button @click="collect">collect</button>
-  <div>status: {{ status }}</div>
+  <button>collect</button>
 </template>
 
 <style scoped>

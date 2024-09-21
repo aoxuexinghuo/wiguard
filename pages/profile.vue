@@ -1,14 +1,14 @@
 <template>
   <div class="profile">
     <div class="avatar">
-      <van-icon name="user-o" size="30" color="white" />
+      <VanIcon name="user-o" size="30" color="white" />
     </div>
     <div class="name">测试用户</div>
   </div>
-  <van-cell-group>
-    <van-cell title="用户名" value="admin" />
-  </van-cell-group>
-  <van-button type="danger" block>退出登录</van-button>
+  <VanCellGroup>
+    <VanCell title="用户名" value="admin" />
+  </VanCellGroup>
+  <VanButton type="danger" block>退出登录</VanButton>
 </template>
 
 <style scoped>

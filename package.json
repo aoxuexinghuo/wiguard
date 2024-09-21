@@ -1,34 +1,23 @@
 {
-  "name": "wiguard",
+  "name": "nuxt-app",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev:tsc": "tsc --watch -p tsconfig.server.json",
-    "dev:nodemon": "nodemon server/main.js",
-    "build": "vue-tsc && vite build && tsc -p tsconfig.server.json",
-    "start": "node server/main.js"
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "chalk": "^5.3.0",
-    "dotenv": "^16.4.5",
-    "echarts": "^5.5.0",
-    "express": "^4.19.2",
-    "express-async-errors": "^3.1.1",
-    "pg": "^8.11.5",
-    "socket.io": "^4.7.5",
-    "socket.io-client": "^4.7.5",
-    "vant": "^4.8.3",
-    "vue": "^3.3.4",
-    "vue-echarts": "^6.7.1",
-    "vue-router": "^4.2.5"
+    "echarts": "^5.5.1",
+    "nuxt": "^3.13.0",
+    "vant": "^4.9.6",
+    "vue": "latest",
+    "vue-echarts": "^7.0.3",
+    "vue-router": "latest"
   },
   "devDependencies": {
-    "@types/express": "^4.17.21",
-    "@types/pg": "^8.11.5",
-    "@vitejs/plugin-vue": "^4.2.3",
-    "nodemon": "^3.1.0",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5",
-    "vue-tsc": "^1.8.5"
+    "@vant/nuxt": "^1.0.6"
   }
 }
