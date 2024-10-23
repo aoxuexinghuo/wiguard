@@ -4,12 +4,11 @@ import { ref } from 'vue';
 import Papa from 'papaparse';
 
 const runtimeConfig = useRuntimeConfig()
+const csiAmplQueue = ref<number[][]>([])
+const maxQueueLength = 100
 
 onMounted(() => {
-  const client = mqtt.connect(runtimeConfig.public.mqttBrokerUri, {
-    username: 'username',
-    password: 'password'
-  })
+  const client = mqtt.connect(runtimeConfig.public.mqttBrokerUri)
   client.on('connect', () => {
     console.log(`Connected to ${runtimeConfig.public.mqttBrokerUri}`);
     client.subscribe('wiguard/csi')
@@ -21,20 +20,30 @@ onMounted(() => {
       skipEmptyLines: true
     })
 
-    data.forEach((row: any, index) => {
+    data.forEach((row: any) => {
       const csi: number[] = JSON.parse(row[24])
+      const csiAmpl: number[] = []
       for (let i = 0; i < csi.length; i += 2) {
-        csidata.value.push([index, i / 2, Math.sqrt(csi[i] ** 2 + csi[i + 1] ** 2)])
+        csiAmpl.push(Math.sqrt(csi[i] ** 2 + csi[i + 1] ** 2))
+      }
+      csiAmplQueue.value.push(csiAmpl)
+      while (csiAmplQueue.value.length > maxQueueLength) {
+        csiAmplQueue.value.shift()
       }
     })
-
-    console.log(csidata.value);
-
   })
+
+  setInterval(() => {
+    csidata.value = csiAmplQueue.value.flatMap((csiAmpl, i) => {
+      return csiAmpl.map((ampl, j) => {
+        return [i, j, ampl]
+      })
+    })
+  }, 100)
 })
 
-const subcarrier = Array.from({ length: 30 }, (_, i) => i)
-const time = Array.from({ length: 300 }, (_, i) => {
+const subcarrier = Array.from({ length: 64 }, (_, i) => i)
+const time = Array.from({ length: maxQueueLength }, (_, i) => {
   return i
 })
 
@@ -79,6 +88,7 @@ const option = computed<ECOption>(() => {
     series: {
       type: 'heatmap',
       data: csidata.value,
+      progressive: 0
     }
   }
 })
