@@ -24,8 +24,8 @@ graph LR
 ESP32-->NanoMQ
 Intel5300-->NanoMQ
 NanoMQ-->Cloud
-Model[⭐Model]-->Cloud
-Cloud-->Web
+Model-->Cloud
+Cloud-->Web[⭐Web]
 Cloud-->Client
 ```
 
