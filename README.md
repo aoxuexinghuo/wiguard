@@ -2,16 +2,6 @@
 
 Wireless sensing based health monitoring system.
 
-## Workflow
-
-```mermaid
-graph LR
-
-Collector-->Broker
-Model<-->Broker
-Broker-->Nuxt.js
-```
-
 ## How to run
 
 First, create a `.env` file in the root directory with the following content:
@@ -25,6 +15,19 @@ Then, build and run the project:
 ```bash
 npm run build
 npm start
+```
+
+## Workflow
+
+```mermaid
+graph LR
+
+ESP32-->NanoMQ
+Intel5300-->NanoMQ
+NanoMQ-->Cloud
+Model[⭐Model]-->Cloud
+Cloud-->Web
+Cloud-->Client
 ```
 
 ## API
