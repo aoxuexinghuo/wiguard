@@ -7,14 +7,13 @@ Wireless sensing based health monitoring system.
 First, create a `.env` file in the root directory with the following content:
 
 ```properties
-DATABASE_RUL=
+NUXT_PUBLIC_MQTT_BROKER_URI=
 ```
 
-Then, build and run the project:
+Then, start the development server:
 
 ```bash
-npm run build
-npm start
+pnpm run dev
 ```
 
 ## Workflow
