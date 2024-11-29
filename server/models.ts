@@ -1,7 +1,17 @@
 import { model, Schema} from 'mongoose';
-
+import mongoose from "mongoose";
 import type { Device } from '../types/Device';
 import type { User } from '../types/User';
+
+// 连接到 MongoDB，如果尚未连接
+if (mongoose.connection.readyState === 0) {
+    mongoose.connect(process.env.MONGODB_URI!, {
+    }).then(() => {
+        console.log('Successfully connected to MongoDB');
+    }).catch((err) => {
+        console.error('Error connecting to MongoDB:', err);
+    });
+}
 
 // 定义 Device 模式
 const deviceSchema = new Schema<Device>({
@@ -23,3 +33,13 @@ const userSchema = new Schema<User>({
 const UserModel = model<User>("User", userSchema);
 
 export { UserModel };
+
+// 连接到 MongoDB，如果尚未连接
+if (mongoose.connection.readyState === 0) {
+    mongoose.connect(process.env.MONGODB_URI!, {
+    }).then(() => {
+        console.log('Successfully connected to MongoDB');
+    }).catch((err) => {
+        console.error('Error connecting to MongoDB:', err);
+    });
+}
