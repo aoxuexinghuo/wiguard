@@ -1,4 +1,5 @@
 import { model, Schema} from 'mongoose';
+
 import type { Device } from '../types/Device';
 import type { User } from '../types/User';
 

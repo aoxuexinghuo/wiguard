@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { UserModel, DeviceModel } from './models';
 
 // 连接到 MongoDB，如果尚未连接
 if (mongoose.connection.readyState === 0) {
