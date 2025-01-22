@@ -8,7 +8,7 @@
   <VanCellGroup>
     <VanCell title="用户名" value="guest" />
   </VanCellGroup>
-  <div class="padding-box">
+  <div class="m4">
     <VanButton type="danger" block>修改密码</VanButton>
   </div>
 </template>
