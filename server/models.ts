@@ -1,35 +1,17 @@
-import { model, Schema} from 'mongoose';
+import { model, Schema } from "mongoose";
 import mongoose from "mongoose";
-import type { Device } from '../types/Device';
-import type { User } from '../types/User';
+import { Device, User } from "~/shared/types";
 
-// 连接到 MongoDB，如果尚未连接
-if (mongoose.connection.readyState === 0) {
-    mongoose.connect(process.env.MONGODB_URI!, {
-    }).then(() => {
-        console.log('Successfully connected to MongoDB');
-    }).catch((err) => {
-        console.error('Error connecting to MongoDB:', err);
-    });
-}
+mongoose.connect(process.env.MONGODB_URI!);
 
-// 定义 Device 模式
 const deviceSchema = new Schema<Device>({
-    owner: { type: Schema.Types.ObjectId, ref: "User", required: true },  // 引用 User 模型
+  owner: { type: Schema.Types.ObjectId, ref: "User", required: true },
 });
 
-// 创建 Device 模型
-const DeviceModel = model<Device>("Device", deviceSchema);
-
-export { DeviceModel };
-
-// 定义 User 模式
 const userSchema = new Schema<User>({
-    username: { type: String, required: true },  // 用户名字段，必填
-    password: { type: String, required: true },  // 密码字段，必填
+  username: { type: String, required: true },
+  password: { type: String, required: true },
 });
 
-// 创建 User 模型
-const UserModel = model<User>("User", userSchema);
-
-export { UserModel };
+export const DeviceModel = model<Device>("Device", deviceSchema);
+export const UserModel = model<User>("User", userSchema);
