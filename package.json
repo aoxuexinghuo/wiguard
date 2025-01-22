@@ -10,22 +10,23 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "bcryptjs": "^2.4.3",
+    "bcrypt": "^5.1.1",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.8.1",
-    "mqtt": "^5.10.1",
-    "npm": "^10.9.0",
-    "nuxt": "^3.13.0",
-    "nuxt-echarts": "^0.2.3",
-    "papaparse": "^5.4.1",
-    "vant": "^4.9.6",
+    "mongoose": "^8.9.5",
+    "mqtt": "^5.10.3",
+    "nuxt": "^3.15.2",
+    "nuxt-echarts": "^0.2.4",
+    "papaparse": "^5.5.1",
+    "vant": "^4.9.16",
     "vue": "latest",
     "vue-router": "latest"
   },
   "devDependencies": {
-    "@types/bcryptjs": "^2.4.6",
+    "@types/bcrypt": "^5.0.2",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/papaparse": "^5.3.15",
-    "@vant/nuxt": "^1.0.6"
+    "@unocss/nuxt": "^65.4.3",
+    "@vant/nuxt": "^1.0.6",
+    "unocss": "^65.4.3"
   }
 }
