@@ -1,33 +1,28 @@
+<script lang="ts" setup>
+const { user, token } = useUser();
+
+const logout = () => {
+  user.value = undefined;
+  token.value = undefined;
+}
+</script>
+
 <template>
-  <div class="profile">
-    <div class="avatar">
-      <VanIcon name="user-o" size="30" color="white" />
-    </div>
-    <div class="name">微智护用户</div>
+  <div class="p4 flex gap-2">
+    <VanIcon class="p2 rounded-full bg-gray-3" name="user-o" size="30" color="white" />
+    <div class="text-sm">{{ user?.username ?? '未登录' }}</div>
   </div>
-  <VanCellGroup>
-    <VanCell title="用户名" value="guest" />
-  </VanCellGroup>
-  <div class="m4">
-    <VanButton type="danger" block>修改密码</VanButton>
+  <div v-if="user">
+    <VanCellGroup>
+      <VanCell title="UID" :value="user.id" />
+    </VanCellGroup>
+    <div class="m4">
+      <VanButton type="danger" block @click="logout">退出登录</VanButton>
+    </div>
+  </div>
+  <div v-else>
+    <div class="m4">
+      <VanButton type="primary" block to="/login">登录</VanButton>
+    </div>
   </div>
 </template>
-
-<style scoped>
-.profile {
-  display: flex;
-  padding: 10px;
-  gap: 10px;
-}
-
-.name {
-  font-size: 0.9rem;
-}
-
-.avatar {
-  display: inline-block;
-  padding: 10px;
-  border-radius: 100%;
-  background-color: lightgray;
-}
-</style>

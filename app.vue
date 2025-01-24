@@ -3,7 +3,11 @@ import { ref } from 'vue'
 import './style.css'
 
 const route = useRoute()
-const selected = ref(route.name?.toString())
+const selected = ref()
+
+watchEffect(() => {
+  selected.value = route.name?.toString()
+})
 </script>
 
 <template>

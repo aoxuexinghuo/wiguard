@@ -21,6 +21,5 @@ export default defineEventHandler(async (event) => {
     { expiresIn: "7d" }
   );
 
-  setCookie(event, "token", token, { maxAge: 60 * 60 * 24 * 7 });
   return { token };
 });
