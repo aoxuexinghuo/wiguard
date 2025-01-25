@@ -11,7 +11,7 @@ const logout = () => {
 </script>
 
 <template>
-  <div class="p4 flex gap-2">
+  <div class="p4 flex gap-2 bg-white">
     <VanIcon class="p2 rounded-full bg-gray-3" name="user-o" size="30" color="white" />
     <div class="text-sm">{{ user?.username ?? '未登录' }}</div>
   </div>

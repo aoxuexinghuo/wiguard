@@ -6,6 +6,9 @@ mongoose.connect(process.env.MONGODB_URI!);
 
 const deviceSchema = new Schema<Device>({
   owner: { type: Schema.Types.ObjectId, ref: "User", required: true },
+  name: { type: String, required: true },
+  description: { type: String },
+  apikey: { type: String, required: true },
 });
 
 const userSchema = new Schema<User>({

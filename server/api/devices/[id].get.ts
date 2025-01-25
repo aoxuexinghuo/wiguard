@@ -6,5 +6,9 @@ export default defineEventHandler(async (event) => {
   if (!user) {
     throw createError({ statusCode: 401, message: "Unauthorized" });
   }
-  return await DeviceModel.findOne({ _id: id, owner: user.id });
+  const device = await DeviceModel.findOne({ _id: id, owner: user.id });
+  if (!device) {
+    throw createError({ statusCode: 404, message: "Device not found" });
+  }
+  return device;
 });

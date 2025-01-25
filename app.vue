@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import '@unocss/reset/normalize.css'
 import './style.css'
 
 const route = useRoute()

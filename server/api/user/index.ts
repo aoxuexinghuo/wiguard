@@ -5,7 +5,5 @@ export default defineEventHandler(async (event) => {
   if (!user) {
     throw createError({ statusCode: 401, message: "Unauthorized" });
   }
-  console.log(user);
-
   return await UserModel.findById(user.id, { password: 0 });
 });
