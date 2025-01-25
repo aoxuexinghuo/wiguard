@@ -15,11 +15,14 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const token = jwt.sign(
-    { username: user.username, id: user._id },
-    process.env.JWT_SECRET!,
-    { expiresIn: "7d" }
-  );
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET!, {
+    expiresIn: "7d",
+  });
 
-  return { token };
+  setCookie(event, "token", token, {
+    httpOnly: true,
+    maxAge: 60 * 60 * 24 * 7,
+  });
+
+  return { _id: user._id, username: user.username };
 });

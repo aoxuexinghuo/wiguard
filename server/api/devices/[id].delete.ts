@@ -3,5 +3,8 @@ import { DeviceModel } from "~/server/models";
 export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, "id");
   const user = event.context.user;
-  return DeviceModel.deleteOne({ _id: id, owner: user.id });
+  if (!user) {
+    throw createError({ statusCode: 401, message: "Unauthorized" });
+  }
+  return await DeviceModel.deleteOne({ _id: id, owner: user.id });
 });

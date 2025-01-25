@@ -1,10 +1,8 @@
-import { DeviceModel } from "~/server/models";
-
 export default defineEventHandler(async (event) => {
-  const id = getRouterParam(event, "id");
   const user = event.context.user;
   if (!user) {
     throw createError({ statusCode: 401, message: "Unauthorized" });
   }
-  return await DeviceModel.findOne({ _id: id, owner: user.id });
+  setCookie(event, "token", "", { maxAge: 0 });
+  return { message: "Logged out" };
 });

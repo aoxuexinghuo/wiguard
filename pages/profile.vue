@@ -1,9 +1,12 @@
 <script lang="ts" setup>
-const { user, token } = useUser();
+import useUser from '~/utils/user';
+
+const user = useUser();
+
 
 const logout = () => {
+  $fetch('/api/user/logout');
   user.value = undefined;
-  token.value = undefined;
 }
 </script>
 
@@ -14,7 +17,7 @@ const logout = () => {
   </div>
   <div v-if="user">
     <VanCellGroup>
-      <VanCell title="UID" :value="user.id" />
+      <VanCell title="UID" :value="user._id" />
     </VanCellGroup>
     <div class="m4">
       <VanButton type="danger" block @click="logout">退出登录</VanButton>

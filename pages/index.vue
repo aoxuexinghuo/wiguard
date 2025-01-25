@@ -1,11 +1,4 @@
 <script setup lang="ts">
-import getUser from '~/utils/user';
-
-const user = ref();
-
-onMounted(() => {
-  user.value = getUser();
-});
 </script>
 
 <template>

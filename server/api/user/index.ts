@@ -1,10 +1,11 @@
-import { DeviceModel } from "~/server/models";
+import { UserModel } from "~/server/models";
 
 export default defineEventHandler(async (event) => {
-  const id = getRouterParam(event, "id");
   const user = event.context.user;
   if (!user) {
     throw createError({ statusCode: 401, message: "Unauthorized" });
   }
-  return await DeviceModel.findOne({ _id: id, owner: user.id });
+  console.log(user);
+
+  return await UserModel.findById(user.id, { password: 0 });
 });
