@@ -1,9 +1,6 @@
 export default defineEventHandler(async (event) => {
-  const user = event.context.user;
-  if (!user) {
-    throw createError({ statusCode: 401, message: "Unauthorized" });
-  }
+  const { user } = await getUserSession(event);
   return await prisma.device.findMany({
-    where: { userId: user.id },
+    where: { userId: user?.id },
   });
 });

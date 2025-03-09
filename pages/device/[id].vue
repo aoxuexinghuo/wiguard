@@ -18,7 +18,8 @@ const deleteDevice = async () => {
 <template>
   <VanCellGroup v-if="device">
     <VanCell title="名称" :value="device.name" />
-    <VanCell title="描述" :value="device.description" />
+    <VanCell title="类型" :value="device.type" />
+    <VanCell title="描述" :value="device.description ?? ''" />
     <VanCell title="Token" :value="device.token" />
     <div class="m4">
       <VanButton type="danger" block @click="deleteDevice">删除设备</VanButton>
