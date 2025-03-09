@@ -11,7 +11,7 @@ defineProps<{
     class="p-2 rounded bg-white hover:shadow transition-shadow cursor-pointer"
     @click="navigateTo(`/device/${device.id}`)"
   >
-    <div class="inline-flex items-center gap-x-1">
+    <div class="inline-flex flex-wrap items-center gap-x-1">
       <span class="font-bold">{{ device.name }}</span>
       <VanTag type="success">在线</VanTag>
       <VanTag>{{ device.type }}</VanTag>
