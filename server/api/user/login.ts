@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
 
   const user = await prisma.user.findUnique({ where: { username } });
 
-  if (!user || !(await verifyPassword(password, user.password))) {
+  if (!user || !(await verifyPassword(user.password, password))) {
     throw createError({
       statusCode: 401,
       message: "Invalid username or password",
