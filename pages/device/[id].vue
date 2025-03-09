@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import type { Device } from '~/shared/types';
-
-const route = useRoute()
+const route = useRoute();
 const id = route.params.id;
-const { data: device, error } = await useFetch<Device>(`/api/devices/${id}`);
+const { data: device, error } = await useFetch(`/api/devices/${id}`);
 
 const deleteDevice = async () => {
-  $fetch(`/api/devices/${id}`, { method: 'DELETE' }).then(() => {
-    showNotify({ message: '删除成功', type: 'success' });
-    navigateTo('/');
-  }).catch(err => {
-    showNotify(`删除失败: ${err.message}`);
-  })
-}
+  $fetch(`/api/devices/${id}`, { method: "DELETE" })
+    .then(() => {
+      showNotify({ message: "删除成功", type: "success" });
+      navigateTo("/");
+    })
+    .catch((err) => {
+      showNotify(`删除失败: ${err.message}`);
+    });
+};
 </script>
 
 <template>
   <VanCellGroup v-if="device">
     <VanCell title="名称" :value="device.name" />
     <VanCell title="描述" :value="device.description" />
-    <VanCell title="APIKey" :value="device.apikey" />
+    <VanCell title="Token" :value="device.token" />
     <div class="m4">
       <VanButton type="danger" block @click="deleteDevice">删除设备</VanButton>
     </div>

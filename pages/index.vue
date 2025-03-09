@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import type { Device } from '~/shared/types';
-
-const { data: devices } = useFetch<Device[]>('/api/devices');
+const { data: devices } = useFetch("/api/devices");
 </script>
 
 <template>

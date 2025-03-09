@@ -1,35 +1,37 @@
 <script setup lang="ts">
-import useUser from '~/utils/user';
-
-const user = useUser();
+const { fetch } = useUserSession();
 const userForm = reactive({
   username: "",
-  password: ""
+  password: "",
 });
 
 const login = () => {
   $fetch("/api/user/login", {
     method: "POST",
-    body: userForm
-  }).then((res) => {
-    user.value = res;
-    showNotify({ message: '登录成功', type: 'success' });
-    navigateTo('/profile');
-  }).catch((err) => {
-    showNotify(`登录失败: ${err.data.message}`);
-  });
-}
+    body: userForm,
+  })
+    .then(async (res) => {
+      showNotify({ message: "登录成功", type: "success" });
+      await fetch();
+      navigateTo("/profile");
+    })
+    .catch((err) => {
+      showNotify(`登录失败: ${err.data.message}`);
+    });
+};
 
 const register = () => {
   $fetch("/api/user/register", {
     method: "POST",
-    body: userForm
-  }).then((res) => {
-    showNotify({ message: '注册成功', type: 'success' });
-  }).catch((err) => {
-    showNotify(`注册失败: ${err.data.message}`);
-  });
-}
+    body: userForm,
+  })
+    .then((res) => {
+      showNotify({ message: "注册成功", type: "success" });
+    })
+    .catch((err) => {
+      showNotify(`注册失败: ${err.data.message}`);
+    });
+};
 </script>
 
 <template>

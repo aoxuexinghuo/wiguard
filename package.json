@@ -7,15 +7,14 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare && prisma generate"
   },
   "dependencies": {
+    "@prisma/client": "^6.4.1",
     "@unocss/reset": "^65.4.3",
-    "bcrypt": "^5.1.1",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.9.5",
     "mqtt": "^5.10.3",
     "nuxt": "^3.15.2",
+    "nuxt-auth-utils": "^0.5.16",
     "nuxt-echarts": "^0.2.4",
     "papaparse": "^5.5.1",
     "vant": "^4.9.16",
@@ -28,6 +27,7 @@
     "@types/papaparse": "^5.3.15",
     "@unocss/nuxt": "^65.4.3",
     "@vant/nuxt": "^1.0.6",
+    "prisma": "^6.4.1",
     "unocss": "^65.4.3"
   }
 }

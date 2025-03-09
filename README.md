@@ -8,6 +8,8 @@ First, create a `.env` file in the root directory with the following content:
 
 ```properties
 NUXT_PUBLIC_MQTT_BROKER_URI=
+NUXT_SESSION_PASSWORD=password-with-at-least-32-characters
+DATABASE_URL=postgres://localhost/wiguard
 ```
 
 Then, start the development server:
