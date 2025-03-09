@@ -94,8 +94,8 @@ const option = computed<ECOption>(() => {
 </script>
 
 <template>
-  <VChart class="chart" :option="option" autoresize />
-  <button>collect</button>
+  <VanNavBar title="实况" />
+  <!-- <VChart class="chart" :option="option" autoresize /> -->
 </template>
 
 <style scoped>

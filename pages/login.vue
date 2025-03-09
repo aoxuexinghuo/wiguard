@@ -13,7 +13,7 @@ const login = () => {
     .then(async (res) => {
       showNotify({ message: "登录成功", type: "success" });
       await fetch();
-      navigateTo("/profile");
+      navigateTo("/");
     })
     .catch((err) => {
       showNotify(`登录失败: ${err.data.message}`);
@@ -35,8 +35,9 @@ const register = () => {
 </script>
 
 <template>
+  <VanNavBar title="登录" />
   <VanForm>
-    <VanCellGroup inset>
+    <VanCellGroup>
       <VanField label="用户名" v-model="userForm.username" />
       <VanField label="密码" v-model="userForm.password" type="password" />
     </VanCellGroup>

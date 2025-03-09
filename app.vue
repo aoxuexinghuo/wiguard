@@ -12,12 +12,11 @@ watchEffect(() => {
 </script>
 
 <template>
-  <VanNavBar title="微智护" />
   <NuxtPage />
   <VanTabbar v-model="selected">
     <VanTabbarItem name="index" icon="wap-home-o" to="/">首页</VanTabbarItem>
     <VanTabbarItem name="live" icon="eye-o" to="/live">实况</VanTabbarItem>
-    <VanTabbarItem name="stats" icon="bar-chart-o" to="/stats">统计</VanTabbarItem>
+    <VanTabbarItem name="stats" icon="bulb-o" to="/message">消息</VanTabbarItem>
     <VanTabbarItem name="profile" icon="user-circle-o" to="/profile">我的</VanTabbarItem>
   </VanTabbar>
 </template>
