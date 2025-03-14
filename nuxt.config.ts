@@ -8,14 +8,14 @@ export default defineNuxtConfig({
     },
   },
   echarts: {
-    charts: ['LineChart'],
+    charts: ["LineChart"],
     components: [
-      'DatasetComponent',  // 结构化数据
-      'GridComponent',     // 控制布局
-      'TooltipComponent',  // 鼠标提示
-      'LegendComponent',   // 图例
-      'TitleComponent',    // 标题
-      'DataZoomComponent', // 缩放
+      "DatasetComponent",
+      "GridComponent",
+      "TooltipComponent",
+      "LegendComponent",
+      "TitleComponent",
+      "DataZoomComponent",
     ],
   },
   runtimeConfig: {

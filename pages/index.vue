@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Device } from "@prisma/client";
 
-const { user } = useUserSession();
+const { user, loggedIn } = useUserSession();
 const devices = ref<Device[]>([]);
 
 const loading = ref(false);
@@ -19,7 +19,7 @@ onMounted(refresh);
   <VanNavBar title="微智护" />
   <div class="subheading">设备列表</div>
   <VanPullRefresh
-    v-if="user"
+    v-if="loggedIn"
     class="min-h-50vh"
     v-model="loading"
     @refresh="refresh"
