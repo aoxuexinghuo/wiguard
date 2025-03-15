@@ -18,11 +18,21 @@ model User {
 }
 
 model Device {
-  id          Int     @id @default(autoincrement())
+  id          Int           @id @default(autoincrement())
   name        String
   description String?
   type        String
   token       String
-  user        User    @relation(fields: [userId], references: [id])
+  user        User          @relation(fields: [userId], references: [id])
   userId      Int
+  DeviceEvent DeviceEvent[]
+}
+
+model DeviceEvent {
+  id        Int      @id @default(autoincrement())
+  type      String
+  message   String
+  deviceId  Int
+  device    Device   @relation(fields: [deviceId], references: [id])
+  createdAt DateTime @default(now())
 }

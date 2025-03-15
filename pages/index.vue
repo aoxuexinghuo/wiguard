@@ -16,7 +16,7 @@ onMounted(refresh);
 </script>
 
 <template>
-  <VanNavBar title="微智护" />
+  <VanNavBar title="首页" />
   <div class="subheading">设备列表</div>
   <VanPullRefresh
     v-if="loggedIn"
