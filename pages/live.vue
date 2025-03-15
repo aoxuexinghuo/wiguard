@@ -8,23 +8,25 @@ const runtimeConfig = useRuntimeConfig();
 const dataBuffer = ref(Array(100).fill(null));
 
 onMounted(() => {
-  const mqttClient = mqtt.connect(runtimeConfig.public.mqttBrokerUri, {
-    username: user.value.username,
-    password: user.value.username,
-  });
-  mqttClient.on("connect", () => {
-    console.log(
-      `Connected to MQTT broker at ${runtimeConfig.public.mqttBrokerUri}`
-    );
-    mqttClient.subscribe(`user/${user.value.username}`);
-  });
-  mqttClient.on("message", (_, message) => {
-    console.log(`Received message: ${message.toString()}`);
+  if (loggedIn) {
+    const mqttClient = mqtt.connect(runtimeConfig.public.mqttBrokerUri, {
+      username: user.value.username,
+      password: user.value.username,
+    });
+    mqttClient.on("connect", () => {
+      console.log(
+        `Connected to MQTT broker at ${runtimeConfig.public.mqttBrokerUri}`
+      );
+      mqttClient.subscribe(`user/${user.value.username}`);
+    });
+    mqttClient.on("message", (_, message) => {
+      console.log(`Received message: ${message.toString()}`);
 
-    const rssi = parseFloat(message.toString());
-    dataBuffer.value.shift();
-    dataBuffer.value.push(rssi);
-  });
+      const rssi = parseFloat(message.toString());
+      dataBuffer.value.shift();
+      dataBuffer.value.push(rssi);
+    });
+  }
 });
 
 const chartOptions = computed(() => ({
@@ -49,4 +51,5 @@ const chartOptions = computed(() => ({
     autoresize
     style="width: 100%; height: 400px"
   />
+  <VanEmpty v-else description="请先登录" />
 </template>
