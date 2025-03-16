@@ -39,7 +39,14 @@ const chartOptions = computed(() => ({
     min: -100,
     name: "RSSI",
   },
-  series: [{ type: "line", smooth: true, data: dataBuffer.value }],
+  series: [
+    {
+      type: "line",
+      smooth: true,
+      showSymbol: false,
+      data: dataBuffer.value,
+    },
+  ],
 }));
 </script>
 
